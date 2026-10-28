@@ -1,0 +1,17 @@
+# SPDX-License-Identifier: GPL-2.0-only
+
+load("//build/kernel/kleaf:kernel.bzl", "kernel_module")
+
+kernel_module(
+    name = "kernelsu",
+    srcs = glob([
+        "**/*.c",
+        "**/*.h",
+    ]) + [
+        "Kbuild",
+        "Makefile",
+    ],
+    outs = ["kernelsu.ko"],
+    kernel_build = "//private/devices/google/common:kernel",
+    visibility = ["//private/devices/google:__subpackages__"],
+)
